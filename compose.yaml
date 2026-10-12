@@ -1,0 +1,15 @@
+services:
+  vanta:
+    build: .
+    image: vanta-in-docker
+    platform: linux/amd64
+    hostname: ${VANTA_HOSTNAME:-vanta-docker}
+    init: true
+    restart: unless-stopped
+    environment:
+      VANTA_TOKEN: ${VANTA_TOKEN:-}
+    volumes:
+      - vanta:/var/vanta
+
+volumes:
+  vanta:
